@@ -18,5 +18,8 @@
   "homepage": "https://github.com/devdominusac12/Wein-Inventar#readme",
   "devDependencies": {
     "electron": "4.0.1"
+  },
+  "dependencies": {
+    "nedb": "^1.8.0"
   }
 }
