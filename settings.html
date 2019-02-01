@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="dominusac12">
+    <title>Wein-Inventar</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="./style/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="./style/album.css" rel="stylesheet">
+    <link href="./style/animations.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <header>
+
+      <div class="navbar navbar-dark bg-dark box-shadow">
+        <div class="container d-flex justify-content-between">
+
+          <a href="#" class="navbar-brand d-flex align-items-center">
+            
+            <strong style="padding-left: 10px;">Einstellungen</strong>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main role="main">
+
+      <section class="jumbotron text-center">
+        <div class="container">
+          <h1 class="jumbotron-heading">Einstellungen</h1>
+        </div>
+      </section>
+
+      <div class="album py-5 bg-light">
+        <div class="container">
+          <div class="row" id="div">
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+               <div class="form-group">
+                        <label>Standardpfad:</label>                   
+                        <input type="checkbox" checked id="checkbox">
+                        <input class="form-control-file" id="path" type="file"  onchange="getfolder(event)" data-buttonText="Ordner auswählen" webkitdirectory mozdirectory msdirectory odirectory directory hidden />
+                 </div>
+                 
+                 <button type="submit" class="btn btn-success"  value="Submit" id="submit">Speichern</button>
+  
+    </main>
+        </div>
+      </div>
+
+    </main>
+    <script src="./script/settings.js"></script>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  </body>
+</html>
