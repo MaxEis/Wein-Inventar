@@ -43,12 +43,20 @@
           <div class="row" id="div">
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
                <div class="form-group">
-                        <label>Standardpfad:</label>                   
-                        <input type="checkbox" checked id="checkbox">
-                        <input class="form-control-file" id="path" type="file"  onchange="getfolder(event)" data-buttonText="Ordner auswählen" webkitdirectory mozdirectory msdirectory odirectory directory hidden />
+                        <label>Aktueller Pfad:</label>
+                        <input class="form-control" readonly id="currentPath">
+                        <button class="btn btn-warning" id="changePathBtn" style="margin-top:15px">Pfad ändern</button>
+
+                        <div id="changePath" hidden>
+                            <button class="btn btn-secondary" style="margin-top:15px" id="standardPathBtn" >Standardpfad verwenden</button>
+                            <input class="form-control-file" id="path" type="file"  onchange="getfolder(event)" style="margin-top:15px" webkitdirectory mozdirectory msdirectory odirectory directory  />
+                            <button class="btn btn-success" id="submit" style="margin-top:15px" >Speichern</button>
+                        </div>
+
+
                  </div>
                  
-                 <button type="submit" class="btn btn-success"  value="Submit" id="submit">Speichern</button>
+                 
   
     </main>
         </div>
@@ -56,9 +64,13 @@
 
     </main>
     <script src="./script/settings.js"></script>
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   </body>
 </html>
+
+
+
+<!-- <label id="standardPath" hidden>Standardpfad:</label>                   
+<input type="checkbox" checked id="checkbox" hidden>
+
+<input class="form-control-file" id="path" type="file"  onchange="getfolder(event)" data-buttonText="Ordner auswählen" webkitdirectory mozdirectory msdirectory odirectory directory hidden />
+ -->

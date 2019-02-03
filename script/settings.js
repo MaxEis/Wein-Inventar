@@ -5,23 +5,30 @@ const storage = require('electron-json-storage');
 //Var path global definiert
 var path = app.getPath('userData');
 
-var checkbox = document.getElementById("checkbox");
+var btnStatus = true;
 
-checkbox.addEventListener("click", function(){
-    if(checkbox.checked){
-        document.getElementById("path").hidden = true;
-        this.path = app.getPath('userData');
-    }else{
-        document.getElementById("path").hidden = false;
-        this.path = path;
-    }
+storage.get('settings', function(error, data) {
+    document.getElementById("currentPath").value = data.path;
 });
 document.getElementById("submit").addEventListener("click", function(){
+    console.log("Saving...");
     storage.set('settings', { path: path}, function(error) {
         if (error) throw error;
       });
+      self.location.href = './settings.html';
 });
-
+document.getElementById("standardPathBtn").addEventListener("click", function(){
+    path = app.getPath('userData');
+});
+document.getElementById("changePathBtn").addEventListener("click", function(){
+    if(btnStatus){
+        btnStatus = false;
+        document.getElementById("changePath").hidden = false;
+    }else{
+        btnStatus = true;
+        document.getElementById("changePath").hidden = true;
+    }   
+});
 function getfolder(e) {
     var files = e.target.files;
     var path = files[0].path;

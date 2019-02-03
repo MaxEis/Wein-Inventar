@@ -1,11 +1,30 @@
 .fadeIn{
+    display: inline;
     animation-name: fadeIn;
     animation-duration: 2s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+    
+}
+.fadeInOutRemove{
+    opacity: 0;
+    animation-name: fadeInOutRemove;
+    animation-duration: 4s;
+    animation-fill-mode: forwards;
+    
 }
 @keyframes fadeIn{
+    0% {opacity: 0; display: inline}
+    50% {opacity: 0.5;}
+    75%{opacity: 0.75;}
+    100%{opacity: 1; }
+}
+@keyframes fadeInOutRemove{
     0% {opacity: 0;}
     50% {opacity: 0.5;}
     75%{opacity: 1;}
-    100%{opacity: 0;}
-
+    100%{opacity: 0; display: none}
+}
+#setup{
+    animation-delay: 3.8s;
 }

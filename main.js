@@ -1,4 +1,5 @@
 const { app, BrowserWindow } = require('electron')
+const storage = require('electron-json-storage');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -9,7 +10,17 @@ function createWindow () {
   win = new BrowserWindow({ width: 1920, height: 1080 })
 
   // and load the index.html of the app.
-  win.loadFile('index.html')
+
+  storage.has('settings', function(error, hasKey) {
+    if (error) throw error;
+   
+    if (hasKey) {
+      win.loadFile('index.html')
+    }else{
+      win.loadFile('first-settings.html')
+    }
+  });
+
 
   // Open the DevTools.
  win.webContents.openDevTools()
