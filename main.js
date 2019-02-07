@@ -16,12 +16,14 @@ function createWindow () {
    
     if (hasKey) {
       win.loadFile('index.html')
+      
     }else{
       win.loadFile('first-settings.html')
     }
   });
 
 
+  
   // Open the DevTools.
  win.webContents.openDevTools()
 
