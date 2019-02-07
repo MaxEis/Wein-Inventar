@@ -36,3 +36,6 @@ function getfolder(e) {
     this.path = path;
 
 }
+document.getElementById('dirChooserBtn').addEventListener("click", function(){
+    document.getElementById('dirChooser').click();
+});
