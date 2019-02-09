@@ -39,3 +39,19 @@ function getfolder(e) {
 document.getElementById('dirChooserBtn').addEventListener("click", function(){
     document.getElementById('dirChooser').click();
 });
+
+storage.get('settings', function(error, data) {
+
+    if (error) throw error;
+    //create Path
+    var path = data.path + '/shelf.db'
+    //load Database
+    var Datastore = require('nedb')
+    , db = new Datastore({ filename: path, autoload: true });
+    db.find({}, function(err, docs){
+        for(var i = 0; i < docs.length; i++){
+            var html = '<tr><th>' + docs[i].name + '</th>' + '<th><button class="btn btn-danger" style="margin-left:40rem" onclick=' + '"self.location.href=' + "'./delete-shelf.html?" + 'id='+ docs[i]._id + "'" + '"' + '>Löschen</button></th>' +'</tr>'
+            document.getElementById('tbody').innerHTML = document.getElementById('tbody').innerHTML + html;
+        }
+    });
+});
