@@ -34,7 +34,7 @@
 
       <section class="jumbotron text-center">
         <div class="container">
-          <h1 class="jumbotron-heading">Erst-Einrichtung</h1>
+          <h1 class="jumbotron-heading">Wein hinzufügen</h1>
         </div>
       </section>
 
@@ -42,19 +42,20 @@
         <div class="container">
           <div class="row" id="div">
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-               <div class="form-group">
-                        <label>Standardpfad:</label>                   
-                        <input type="checkbox" checked id="checkbox">
-                        <br>
-                        <input type="file" id='dirChooser' onchange="getfolder(event)" webkitdirectory hidden>
-                        <button id="dirChooserBtn" class="btn btn-primary" style="margin-top:10px" hidden>Ordner auswählen</button>
-                        <br>
-                          
-                 </div>
+              <div class="form-group">
                  
-                 <button type="submit" class="btn btn-success"  value="Submit" id="submit">Speichern</button>
+                
+                <label for="chooseShelf">Weinregal auswählen</label>
+                <select class="form-control" id="chooseShelf">
+                  <option></option>
+                  <option>Regal hinzufügen</option>
+                  <option disabled>----------------</option>>
+                </select>
+                <h6 class="text-danger" id="errorMsgShelf" hidden>Bitte zuerst ein Regal auswählen/ erstellen</h6>
+              </div>             
+              <button type="submit" class="btn btn-success"  value="Submit" id="submit">Speichern</button>
   
-    </main>
+              </main>
         </div>
       </div>
 

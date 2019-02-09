@@ -2,6 +2,8 @@ var remote = require('electron').remote;
 var fs = remote.require('fs');
 const storage = require('electron-json-storage');
 
+loadData();
+
 
 document.getElementById('submit').addEventListener("click", function(){
     storage.get('settings', function(error, data) {
@@ -11,10 +13,38 @@ document.getElementById('submit').addEventListener("click", function(){
 });
 
 
+function loadData(){
+    storage.get('settings', function(error, data) {
+        //create Path
+       var path = data.path + '/shelf.db'
+       //load Database
+       var Datastore = require('nedb')
+       , db = new Datastore({ filename: path, autoload: true });
+
+       db.find({}, function(err, docs){
+        showList(docs)
+       });
+       
+   });
+}
+
+//Ggf neues Regal hinzufügen
+document.getElementById('chooseShelf').addEventListener('change', function(){
+    if(document.getElementById('chooseShelf').value == 'Regal hinzufügen'){
+        self.location.href = './create-shelf.html';
+        
+    }else if(document.getElementById('chooseShelf').value == ''){
+        document.getElementById('errorMsgShelf').hidden = false;
+    }else{
+        document.getElementById('errorMsgShelf').hidden = true;
+    }
+});
+
 // Liste mit shelf anzeigen
-function showList(){
-    
-    document.getElementById('list').innerHTML = document.getElementById('list')   
+function showList(docs){
+    for(var i = 0; i < parseInt(docs.length); i++){       
+        document.getElementById('chooseShelf').innerHTML = document.getElementById('chooseShelf').innerHTML + '<option>' + docs[i].name + '</option>'; 
+    }  
 }
 
 //daten auf Formular laden
