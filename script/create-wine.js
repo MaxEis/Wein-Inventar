@@ -60,7 +60,7 @@ function getData(){
     var drinkUntil = document.getElementById('drinkUntil');
     var bottleType = document.getElementById('bottleType');
     var shelf = document.getElementById('shelf');
-    var liegeplatz = document.getElementById('liegeplatz');
+    var location = document.getElementById('location');
     var imgPath = document.getElementById('imgPath');
 
     return docs = {
@@ -75,7 +75,7 @@ function getData(){
         drinkUntil: drinkUntil,
         bottleType: bottleType,
         shelf: shelf,
-        liegeplatz: liegeplatz,
+        liegeplatz: location,
         imgPath: imgPath
     };
 }
