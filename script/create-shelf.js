@@ -18,7 +18,7 @@ storage.get('settings', function(error, data) {
     //Insert doc
     db.insert(doc);
     //Redirect to main page
-    self.location.href = './index.html';
+    self.location.href = './create-wine.html';
   });
 
   
