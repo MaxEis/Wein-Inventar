@@ -1,6 +1,9 @@
 var remote = require('electron').remote;
 var fs = remote.require('fs');
+var path;
+var name;
 const storage = require('electron-json-storage');
+
 
 loadData();
 
@@ -49,23 +52,23 @@ function showList(docs){
 
 //daten auf Formular laden
 function getData(){
-    var name = document.getElementById('name');
-    var traube = document.getElementById('traube');
-    var jahrgang = document.getElementById('jahrgang');
-    var liegeZeit = document.getElementById('liegeZeit');
-    var type = document.getElementById('type');
-    var menge = document.getElementById('menge');
-    var weingut = document.getElementById('weingut');
-    var country = document.getElementById('country');
-    var drinkUntil = document.getElementById('drinkUntil');
-    var bottleType = document.getElementById('bottleType');
-    var shelf = document.getElementById('shelf');
-    var location = document.getElementById('location');
-    var imgPath = document.getElementById('imgPath');
-
+    name = document.getElementById('name').value;
+/*     var traube = document.getElementById('traube').innerHTML;
+    var jahrgang = document.getElementById('jahrgang').innerHTML;
+    var liegeZeit = document.getElementById('liegeZeit').innerHTML;
+    var type = document.getElementById('type').innerHTML;
+    var menge = document.getElementById('menge').innerHTML;
+    var weingut = document.getElementById('weingut').innerHTML;
+    var country = document.getElementById('country').innerHTML;
+    var drinkUntil = document.getElementById('drinkUntil').innerHTML;
+    var bottleType = document.getElementById('bottleType').innerHTML;
+    var shelf = document.getElementById('shelf').innerHTML;
+    var location = document.getElementById('location').innerHTML;
+    var imgPath = document.getElementById('imgPath').innerHTML;
+ */
     return docs = {
-        name: name,
-        traube: traube,
+        name: name
+ /*       , traube: traube,
         jahrgang: jahrgang,
         liegeZeit: liegeZeit,
         type: type,
@@ -76,7 +79,7 @@ function getData(){
         bottleType: bottleType,
         shelf: shelf,
         liegeplatz: location,
-        imgPath: imgPath
+        imgPath: imgPath */
     };
 }
 //Check if Ordner vorhanden ist, wenn nicht erstellen
@@ -87,3 +90,23 @@ function checkDirectorySync(directory) {
       fs.mkdirSync(directory);
     }
   }
+
+  function getImg(e) {
+    var files = e.target.files;
+    var path = files[0].path;
+    //Globale Pfad Variable setzen
+    this.path = path;
+
+}
+document.getElementById('imgChooserBtn').addEventListener("click", function(){
+    document.getElementById('imgChooser').click();
+});
+
+document.getElementById("submit").addEventListener("click", function(){
+    getData();
+    storage.get('settings', function(error, data) {
+        fs.copyFile(path, data.path + "/img/" + name + ".jpg" , (err) => {
+            if (err) throw err;
+          });
+    });
+});

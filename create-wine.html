@@ -51,8 +51,10 @@
                   <option>Regal hinzufügen</option>
                   <option disabled>----------------</option>>
                 </select>
-                <label>Bild</label>
-                <!-- Hier muss die Bildauswahl entstehen (Bild auswählen bzw. kopieren) -->
+                
+                <input type="file" id='imgChooser' onchange="getImg(event)" accept="image/x-png,image/gif,image/jpeg,image/tiff" hidden>
+                <button id="imgChooserBtn" class="btn btn-primary" style="margin-top:10px">Bild auswählen</button>
+                <br>
 
                 <label>Name des Weins</label>                   
                 <input class="form-control" placeholder="Zar Simeon" id="name" required>
