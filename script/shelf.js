@@ -18,6 +18,7 @@ function drawTable(index){
         document.getElementById('tr').innerHTML = '<th></th>';
 
         db.find({}, function(err, docs){
+            document.getElementById('shelfName').innerHTML = docs[index].name;
             if(index+1 == docs.length){
                 document.getElementById('next-btn').disabled = true;
             }else{
