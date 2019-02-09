@@ -33,8 +33,17 @@ function drawTable(index){
                 var html = '<tr>' + '<th>' + i + '</th>' +'</tr>';
                 document.getElementById('tbody').innerHTML = document.getElementById("tbody").innerHTML + html; 
             }
+            var letter;
+            var letterId = 0;
+            var sletter = 0;
             for(var i = 0; i < parseInt(docs[index].rows); i++){
-                var html = '<th>' + alphabet.charAt(i) + '</th>';
+                if(i > 25){
+                    letter = 'A' + alphabet.charAt(i-26);
+
+                }else{
+                    letter = alphabet.charAt(i);
+                }
+                var html = '<th>' + letter + '</th>';
                 document.getElementById('tr').innerHTML = document.getElementById("tr").innerHTML + html; 
             }
 
