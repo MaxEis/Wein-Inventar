@@ -1,0 +1,19 @@
+<script>
+  var url = new URL(window.location.href);
+  const storage = require('electron-json-storage');
+  var id = url.searchParams.get("id");
+  storage.get('settings', function(error, data) {
+
+    if (error) throw error;
+    //create Path
+    var path = data.path + '/shelf.db'
+    //load Database
+    var Datastore = require('nedb')
+    , db = new Datastore({ filename: path, autoload: true });
+    db.remove({ _id: id }, {}, function (err, numRemoved) {
+        // numRemoved = 1
+    });
+    self.location.href = "./../settings.html";
+});
+
+</script>
