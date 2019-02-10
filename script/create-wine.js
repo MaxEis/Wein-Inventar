@@ -96,7 +96,8 @@ function checkDirectorySync(directory) {
     var path = files[0].path;
     //Globale Pfad Variable setzen
     this.path = path;
-
+    document.getElementById('wineImage').src = path;
+    document.getElementById('wineImage').hidden = false;
 }
 document.getElementById('imgChooserBtn').addEventListener("click", function(){
     document.getElementById('imgChooser').click();
